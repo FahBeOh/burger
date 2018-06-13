@@ -1,9 +1,9 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    all: function () {
+    all: function (callback) {
         orm.selectAll("burgers", function(res) {
-            console.log(res);
+            callback(res);
         });
     },
     create: function(val){

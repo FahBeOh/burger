@@ -1,9 +1,18 @@
 var express = require("express");
-var burger = require("../models/burger.js")
 var router = express.Router();
+var orm = require("../models/burger.js");
 
 router.get("/", function(req, res) {
-    res.render("index");
+    orm.all(function(data){
+        var burgers = {
+            burgers: data
+        };
+        console.log(burgers);
+        res.render("index", burgers);
+    });
 });
 
+// router.put("/update", function(req, res) {
+//     orm.
+// })
 module.exports = router;
